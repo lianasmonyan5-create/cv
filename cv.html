@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Liana Simonyan — CV</title>
+  <style>
+    :root {
+      --bg: #0b0f0c;
+      --surface: #121814;
+      --surface-2: #17201a;
+      --text: #e8f1eb;
+      --muted: #9fb0a5;
+      --accent: #22e584;
+      --accent-soft: rgba(34, 229, 132, 0.12);
+      --border: rgba(232, 241, 235, 0.1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 32px 16px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+    }
+
+    /* Header */
+    .header {
+      padding: 32px;
+      background: linear-gradient(135deg, var(--surface-2), var(--surface));
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .profile-box {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      flex-wrap: wrap;
+    }
+
+    .avatar {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--accent);
+      box-shadow: 0 0 20px rgba(34, 229, 132, 0.2);
+      background-color: var(--surface-2);
+    }
+
+    .terminal-tag {
+      display: inline-block;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 13px;
+      color: var(--accent);
+      background: var(--accent-soft);
+      padding: 4px 10px;
+      border-radius: 999px;
+      margin-bottom: 8px;
+    }
+
+    h1 {
+      font-size: 30px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+
+    .role {
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 15px;
+      margin-top: 2px;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      margin-top: 2px;
+      font-size: 14px;
+    }
+
+    .btn-print {
+      background: var(--accent);
+      color: #07120c;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      transition: transform 0.15s ease, opacity 0.15s ease;
+    }
+
+    .btn-print:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
+    }
+
+    /* Two-column layout */
+    .main-grid {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+    }
+
+    .sidebar {
+      padding: 28px;
+      border-right: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.01);
+    }
+
+    .content {
+      padding: 28px 32px;
+    }
+
+    .section {
+      margin-bottom: 28px;
+    }
+
+    .section:last-child {
+      margin-bottom: 0;
+    }
+
+    .section-title {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--accent);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .section-title::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    p {
+      color: var(--text);
+      font-size: 14.5px;
+    }
+
+    .muted {
+      color: var(--muted);
+      font-size: 13.5px;
+    }
+
+    /* Skill groups */
+    .skill-group {
+      margin-bottom: 14px;
+    }
+
+    .skill-group:last-child {
+      margin-bottom: 0;
+    }
+
+    .skill-label {
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .skill-value {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* Cards & lists */
+    .item {
+      padding: 15px 18px;
+      border-radius: 12px;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      margin-bottom: 12px;
+    }
+
+    .item:last-child {
+      margin-bottom: 0;
+    }
+
+    .item-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .item-title {
+      font-weight: 600;
+      font-size: 15.5px;
+    }
+
+    .item-meta {
+      font-size: 12.5px;
+      color: var(--accent);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    }
+
+    .bullet-list {
+      margin-top: 8px;
+      padding-left: 18px;
+      color: var(--muted);
+      font-size: 13.8px;
+    }
+
+    .bullet-list li {
+      margin-bottom: 5px;
+    }
+
+    .bullet-list li:last-child {
+      margin-bottom: 0;
+    }
+
+    .lang-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--border);
+      font-size: 13.8px;
+    }
+
+    .lang-row:last-child {
+      border-bottom: none;
+    }
+
+    @media (max-width: 820px) {
+      .main-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .sidebar {
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+      }
+    }
+
+    @media print {
+      body {
+        background: #fff;
+        color: #111;
+        padding: 0;
+      }
+
+      .container {
+        box-shadow: none;
+        border: none;
+        background: #fff;
+        color: #111;
+      }
+
+      .header, .sidebar, .item {
+        background: #fff !important;
+        color: #111 !important;
+        border-color: #ddd !important;
+      }
+
+      .terminal-tag, .section-title, .item-meta, .role {
+        color: #0a7a43 !important;
+      }
+
+      .avatar {
+        border-color: #0a7a43 !important;
+        box-shadow: none !important;
+      }
+
+      .btn-print {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="profile-box">
+        <!-- Քո նկարի ֆայլը դիր նույն պապկայում՝ photo.jpg անունով -->
+        <img src="photo.jpg" alt="Liana Simonyan" class="avatar" />
+        <div>
+          <span class="terminal-tag">$ ./cv --user="Liana Simonyan"</span>
+          <h1>Liana Simonyan</h1>
+          <div class="role">Junior DevOps Engineer / Trainee</div>
+          <p class="subtitle">Yerevan, Armenia</p>
+        </div>
+      </div>
+      <button class="btn-print" onclick="window.print()">Save / Print PDF</button>
+    </header>
+
+    <div class="main-grid">
+      <aside class="sidebar">
+        <div class="section">
+          <h2 class="section-title">Technical Skills</h2>
+
+          <div class="skill-group">
+            <div class="skill-label">Operating Systems</div>
+            <div class="skill-value">Linux (Ubuntu/Debian, RHEL), System Administration, POSIX Standards</div>
+          </div>
+
+          <div class="skill-group">
+            <div class="skill-label">Command Line &amp; Scripting</div>
+            <div class="skill-value">Bash Shell Navigation, Text Processing (grep, awk, sed, find), I/O Redirection, Pipelines</div>
+          </div>
+
+          <div class="skill-group">
+            <div class="skill-label">Systems Programming</div>
+            <div class="skill-value">C Language, Pointer Arithmetic, Memory Alignment, Data Structures, Structural Systems Architecture</div>
+          </div>
+
+          <div class="skill-group">
+            <div class="skill-label">OS Internals &amp; Process Control</div>
+            <div class="skill-value">Process Management (fork, exec), Signal Handling, File Descriptors, Memory Layout (Stack, Data, Heap)</div>
+          </div>
+
+          <div class="skill-group">
+            <div class="skill-label">Networking &amp; Protocols (In Progress)</div>
+            <div class="skill-value">OSI Model, TCP/IP Basics, Socket Programming</div>
+          </div>
+
+          <div class="skill-group">
+            <div class="skill-label">Developer Tools</div>
+            <div class="skill-value">Git, GitHub Basics, Vim, VS Code, GCC Compiler Toolchain, Make</div>
+          </div>
+        </div>
+
+        <div class="section">
+          <h2 class="section-title">Languages</h2>
+          <div class="lang-row">
+            <span>Armenian</span>
+            <span class="muted">Native</span>
+          </div>
+          <div class="lang-row">
+            <span>Russian</span>
+            <span class="muted">Upper-Intermediate (B2)</span>
+          </div>
+          <div class="lang-row">
+            <span>English</span>
+            <span class="muted">Intermediate (B1)</span>
+          </div>
+        </div>
+      </aside>
+
+      <main class="content">
+        <div class="section">
+          <h2 class="section-title">Professional Summary</h2>
+          <p>
+            Motivated and systems-focused Junior DevOps Engineer with a solid foundation in Linux System
+            Administration, C Systems Programming, and Computer Architecture. Demonstrates a strong understanding of
+            low-level OS internals, POSIX system calls, process management, and shell scripting. Passionate about
+            infrastructure automation, continuous learning, and optimizing build pipelines. Eager to contribute technical
+            skills and growth mindset to the engineering team at Digitain.
+          </p>
+        </div>
+
+        <div class="section">
+          <h2 class="section-title">Education &amp; Technical Training</h2>
+          <div class="item">
+            <div class="item-top">
+              <span class="item-title">PicsArt Academy — DevHack DevOps &amp; Systems Engineering Program</span>
+              <span class="item-meta">Month 6 (In Progress)</span>
+            </div>
+            <ul class="bullet-list">
+              <li>
+                <strong>Phase 1 (Completed): Computer Architecture &amp; Systems Programming:</strong> Deep dive into Linux
+                internals, CPU/RAM architectures, Assembly concepts, C programming, process lifecycle (task_struct),
+                signals, and low-level File I/O.
+              </li>
+              <li>
+                <strong>Phase 2 (Current): Networking &amp; System Infrastructure:</strong> Advanced virtual memory
+                management, IPC mechanisms (Pipes, FIFOs, Shared Memory), Socket programming, and Bash automation.
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="section">
+          <h2 class="section-title">Key Projects</h2>
+
+          <div class="item">
+            <div class="item-top">
+              <span class="item-title">Simple Shell Implementation</span>
+              <span class="item-meta">C Language</span>
+            </div>
+            <ul class="bullet-list">
+              <li>Built a custom UNIX command-line interpreter in C using low-level POSIX system calls.</li>
+              <li>Implemented process creation (fork, execvp), I/O redirection (dup2), and signal handling for dynamic program execution.</li>
+              <li>Handled memory management and path expansion for interactive command execution.</li>
+            </ul>
+          </div>
+
+          <div class="item">
+            <div class="item-top">
+              <span class="item-title">Custom my_wc Utility</span>
+              <span class="item-meta">C / POSIX</span>
+            </div>
+            <ul class="bullet-list">
+              <li>Replicated the standard wc (word count) utility in C using raw file descriptors and byte-stream loops.</li>
+              <li>Efficiently processed lines, words, and character/byte counts from standard input and file streams.</li>
+            </ul>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+</body>
+</html>
